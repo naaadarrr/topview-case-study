@@ -1,19 +1,14 @@
 import { Metadata } from "next";
-import { docs, meta } from "@/.source";
-import { loader } from "fumadocs-core/source";
-import { createMDXSource } from "fumadocs-mdx";
 import { siteConfig } from "@/lib/site";
-
-const blogSource = loader({
-  baseUrl: "/blog",
-  source: createMDXSource(docs, meta),
-});
+import { getBlogSource } from "@/lib/blog-source";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const blogSource = getBlogSource();
+  
   try {
     const { slug } = await params;
 

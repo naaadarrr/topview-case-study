@@ -1,8 +1,6 @@
-import { docs, meta } from "@/.source";
 import { DocsBody } from "fumadocs-ui/page";
-import { loader } from "fumadocs-core/source";
-import { createMDXSource } from "fumadocs-mdx";
 import { notFound } from "next/navigation";
+import { getBlogSource } from "@/lib/blog-source";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -21,11 +19,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const blogSource = loader({
-  baseUrl: "/blog",
-  source: createMDXSource(docs, meta),
-});
-
 const formatDate = (date: Date): string => {
   return date.toLocaleDateString("en-US", {
     year: "numeric",
@@ -35,6 +28,7 @@ const formatDate = (date: Date): string => {
 };
 
 export default async function BlogPost({ params }: PageProps) {
+  const blogSource = getBlogSource();
   const { slug } = await params;
 
   if (!slug || slug.length === 0) {

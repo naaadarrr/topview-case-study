@@ -1,10 +1,8 @@
-import { docs, meta } from "@/.source";
-import { loader } from "fumadocs-core/source";
-import { createMDXSource } from "fumadocs-mdx";
 import { Suspense } from "react";
 import { BlogCard } from "@/components/blog-card";
 import { TagFilter } from "@/components/tag-filter";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { getBlogSource } from "@/lib/blog-source";
 
 interface BlogData {
   title: string;
@@ -23,11 +21,6 @@ interface BlogPage {
   data: BlogData;
 }
 
-const blogSource = loader({
-  baseUrl: "/blog",
-  source: createMDXSource(docs, meta),
-});
-
 const formatDate = (date: Date): string => {
   return date.toLocaleDateString("en-US", {
     year: "numeric",
@@ -41,8 +34,46 @@ export default async function HomePage({
 }: {
   searchParams: Promise<{ tag?: string }>;
 }) {
+  let blogSource;
+  try {
+    blogSource = getBlogSource();
+  } catch (error) {
+    console.error('Error initializing blog source:', error);
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center p-6 max-w-2xl">
+          <h1 className="text-2xl font-bold mb-4">Loading Error</h1>
+          <p className="text-muted-foreground mb-4">
+            Unable to load blog posts. Please try refreshing the page.
+          </p>
+          <div className="text-left bg-muted p-4 rounded-lg mt-4">
+            <p className="text-sm font-mono text-muted-foreground break-all">
+              Error: {error instanceof Error ? error.message : 'Unknown error'}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   const resolvedSearchParams = await searchParams;
-  const allPages = blogSource.getPages() as BlogPage[];
+  let allPages: BlogPage[] = [];
+  
+  try {
+    allPages = blogSource.getPages() as BlogPage[];
+  } catch (error) {
+    console.error('Error getting pages:', error);
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center p-6">
+          <h1 className="text-2xl font-bold mb-4">Loading Error</h1>
+          <p className="text-muted-foreground">
+            Unable to load blog posts. Please try refreshing the page.
+          </p>
+        </div>
+      </div>
+    );
+  }
   const sortedBlogs = allPages.sort((a, b) => {
     const dateA = new Date(a.data.date).getTime();
     const dateB = new Date(b.data.date).getTime();
