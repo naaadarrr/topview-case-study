@@ -34,7 +34,7 @@ dependencies:
     version: 1.2.3(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0)(react@19.0.0)
   '@tailwindcss/typography':
     specifier: ^0.5.16
-    version: 0.5.16(tailwindcss@4.0.0)
+    version: 0.5.16(tailwindcss@4.1.16)
   '@types/mdx':
     specifier: ^2.0.13
     version: 2.0.13
@@ -55,7 +55,7 @@ dependencies:
     version: 11.6.10(fumadocs-core@15.6.2)(next@15.5.6)
   fumadocs-ui:
     specifier: ^15.6.2
-    version: 15.6.2(@types/react-dom@19.0.0)(@types/react@19.0.0)(next@15.5.6)(react-dom@19.0.0)(react@19.0.0)(tailwindcss@4.0.0)
+    version: 15.6.2(@types/react-dom@19.0.0)(@types/react@19.0.0)(next@15.5.6)(react-dom@19.0.0)(react@19.0.0)(tailwindcss@4.1.16)
   geist:
     specifier: ^1.4.2
     version: 1.4.2(next@15.5.6)
@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^3
     version: 3.0.0
   '@tailwindcss/postcss':
-    specifier: ^4
-    version: 4.0.0
+    specifier: ^4.1.16
+    version: 4.1.16
   '@types/node':
     specifier: ^20
     version: 20.0.0
@@ -110,8 +110,8 @@ devDependencies:
     specifier: 15.3.5
     version: 15.3.5(eslint@9.0.0)(typescript@5.0.2)
   tailwindcss:
-    specifier: ^4
-    version: 4.0.0
+    specifier: ^4.1.16
+    version: 4.1.16
   tw-animate-css:
     specifier: ^1.3.5
     version: 1.3.5
@@ -2380,18 +2380,17 @@ packages:
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.16
     dev: true
 
-  /@tailwindcss/postcss@4.0.0:
-    resolution: {integrity: sha512-lI2bPk4TvwavHdehjr5WiC6HnZ59hacM6ySEo4RM/H7tsjWd8JpqiNW9ThH7rO/yKtrn4mGBoXshpvn8clXjPg==}
+  /@tailwindcss/postcss@4.1.16:
+    resolution: {integrity: sha512-Qn3SFGPXYQMKR/UtqS+dqvPrzEeBZHrFA92maT4zijCVggdsXnDBMsPFJo1eArX3J+O+Gi+8pV4PkqjLCNBk3A==}
     dependencies:
       '@alloc/quick-lru': 5.2.0
       '@tailwindcss/node': 4.1.16
       '@tailwindcss/oxide': 4.1.16
-      lightningcss: 1.30.2
       postcss: 8.5.6
-      tailwindcss: 4.0.0
+      tailwindcss: 4.1.16
     dev: true
 
-  /@tailwindcss/typography@0.5.16(tailwindcss@4.0.0):
+  /@tailwindcss/typography@0.5.16(tailwindcss@4.1.16):
     resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
@@ -2400,7 +2399,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.0
+      tailwindcss: 4.1.16
     dev: false
 
   /@tybys/wasm-util@0.10.1:
@@ -4074,7 +4073,7 @@ packages:
       - supports-color
     dev: false
 
-  /fumadocs-ui@15.6.2(@types/react-dom@19.0.0)(@types/react@19.0.0)(next@15.5.6)(react-dom@19.0.0)(react@19.0.0)(tailwindcss@4.0.0):
+  /fumadocs-ui@15.6.2(@types/react-dom@19.0.0)(@types/react@19.0.0)(next@15.5.6)(react-dom@19.0.0)(react@19.0.0)(tailwindcss@4.1.16):
     resolution: {integrity: sha512-V6WkBXJc828Xz5bLk1fPJRsC5Gvd9NVbgsAE1Gcu2j9lQ4ebhtLxh1l2FmATzkjp/xe1Nf8ZrEgP3lKwBw7H+g==}
     peerDependencies:
       '@types/react': '*'
@@ -4112,7 +4111,7 @@ packages:
       react-medium-image-zoom: 5.4.0(react-dom@19.0.0)(react@19.0.0)
       scroll-into-view-if-needed: 3.1.0
       tailwind-merge: 3.3.1
-      tailwindcss: 4.0.0
+      tailwindcss: 4.1.16
     transitivePeerDependencies:
       - '@oramacloud/client'
       - '@types/react-dom'
@@ -6496,12 +6495,8 @@ packages:
     resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
     dev: false
 
-  /tailwindcss@4.0.0:
-    resolution: {integrity: sha512-ULRPI3A+e39T7pSaf1xoi58AqqJxVCLg8F/uM5A3FadUbnyDTgltVnXJvdkTjwCOGA6NazqHVcwPJC5h2vRYVQ==}
-
   /tailwindcss@4.1.16:
     resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
-    dev: true
 
   /tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
