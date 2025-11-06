@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const { createMDX } = require('fumadocs-mdx/next');
+
+const withMDX = createMDX();
+
 const nextConfig = {
   // Keep TypeScript errors blocking builds so issues surface early
   typescript: { ignoreBuildErrors: false },
@@ -6,6 +10,6 @@ const nextConfig = {
   // eslint: { ignoreDuringBuilds: true },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
 
 
