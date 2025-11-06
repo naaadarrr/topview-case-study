@@ -157,17 +157,19 @@ const styles = {
   },
 } as const;
 
-export default async function Image({ params }: { params: { slug: string } }) {
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const blogSource = getBlogSource();
   
   try {
-    const page = await blogSource.getPage([params.slug]);
+    const { slug } = await params;
+    const page = await blogSource.getPage([slug]);
 
     if (!page) {
       return new Response("Blog post not found", { status: 404 });
     }
 
-    const authorKey = page.data.author as string;
+    const pageData = page.data as any;
+    const authorKey = pageData.author as string;
     const authorDetails =
       authorKey && isValidAuthor(authorKey)
         ? getAuthor(authorKey as AuthorKey)
@@ -204,9 +206,9 @@ export default async function Image({ params }: { params: { slug: string } }) {
                 height={80}
                 style={styles.logo}
               />
-              <h1 style={styles.title}>{page.data.title}</h1>
-              {page.data.description && (
-                <p style={styles.summary}>{page.data.description}</p>
+              <h1 style={styles.title}>{pageData.title}</h1>
+              {pageData.description && (
+                <p style={styles.summary}>{pageData.description}</p>
               )}
             </div>
             <div style={styles.metaContainer}>
@@ -227,12 +229,12 @@ export default async function Image({ params }: { params: { slug: string } }) {
                   <span>{authorDetails.name}</span>
                 </div>
               )}
-              {authorDetails && page.data.date && (
+              {authorDetails && pageData.date && (
                 <span style={styles.dotSeparator}>•</span>
               )}
-              {page.data.date && (
+              {pageData.date && (
                 <p style={{ ...styles.metaBase, ...styles.dateMeta }}>
-                  {formatDate(page.data.date)}
+                  {formatDate(pageData.date)}
                 </p>
               )}
             </div>
