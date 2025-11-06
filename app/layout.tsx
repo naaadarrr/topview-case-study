@@ -39,9 +39,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ChakraProviderWrapper>
-            <SiteNav />
-            {children}
-            <Footer />
+          <SiteNav />
+          {children}
+          <Footer />
           </ChakraProviderWrapper>
         </ThemeProvider>
       </body>
