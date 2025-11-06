@@ -30,14 +30,14 @@ export function KeyResultsSplit({
   highlightsLabel = "Key highlights",
 }: KeyResultsSplitProps) {
   return (
-    <Box as="section" role="region" aria-label="Key highlights and context" py={{ base: 12, md: 20 }}>
+    <Box as="section" role="region" aria-label="Key highlights and context" py={{ base: 12, md: 4}}>
       <Container maxW="6xl" color="gray.800" px={{ base: 6, xl: 0 }}>
         <Grid templateColumns={{ base: "1fr", md: "280px minmax(0, 1fr)" }} gap={{ base: 12, md: 24 }} alignItems="start">
           <Stack spacing={6} maxW={{ md: "280px" }}>
             <Heading as="h2" fontSize="16px" fontWeight="400">
               {highlightsLabel}
             </Heading>
-            <Stack spacing={4}>
+            <Stack spacing={8}>
               {stats.map((item) => (
                 <Box
                   key={`${item.label}-${item.value}`}
@@ -59,7 +59,7 @@ export function KeyResultsSplit({
               borderRadius="12px"
               bg="rgba(111, 99, 255, 0.08)"
               p={{ base: 6, md: 8 }}
-              spacing={4}
+              spacing={6}
               align="flex-start"
               mt={{ base: 10, md: 12 }}
             >
@@ -81,7 +81,7 @@ export function KeyResultsSplit({
             </Stack>
           </Stack>
 
-          <Stack spacing={10}>
+          <Stack spacing={16}>
             <Stack spacing={6}>
               <Heading as="h2" fontSize={{ base: "2xl", md: "32px" }} fontWeight="700">
                 {narrative.title}
